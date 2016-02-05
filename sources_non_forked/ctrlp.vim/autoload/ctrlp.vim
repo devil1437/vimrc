@@ -121,7 +121,7 @@ let [s:lcmap, s:prtmaps] = ['nn <buffer> <silent>', {
 	\ 'PrtHistory(-1)':       ['<c-n>'],
 	\ 'PrtHistory(1)':        ['<c-p>'],
 	\ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-	\ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+	\ 'AcceptSelection("h")': ['<c-x>', '<c-i>', '<c-cr>', '<c-s>'],
 	\ 'AcceptSelection("t")': ['<c-t>'],
 	\ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
 	\ 'ToggleFocus()':        ['<s-tab>'],
