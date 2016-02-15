@@ -16,3 +16,7 @@ set mouse=
 
 " Enable auto reload
 set autoread
+
+" Enable cursor line
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=8 ctermfg=NONE
