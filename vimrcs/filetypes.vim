@@ -17,7 +17,7 @@ au FileType python map <buffer> <leader>1 /class
 au FileType python map <buffer> <leader>2 /def 
 au FileType python map <buffer> <leader>C ?class 
 au FileType python map <buffer> <leader>D ?def 
-au FileType python set noexpandtab
+au FileType python set expandtab
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
@@ -52,5 +52,10 @@ function! CoffeeScriptFold()
     setl foldlevelstart=1
 endfunction
 au FileType coffee call CoffeeScriptFold()
+
+""""""""""""""""""""""""""""""
+" => cpp section
+"""""""""""""""""""""""""""""""
+au FileType c,cpp set noexpandtab
 
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
