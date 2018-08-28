@@ -18,12 +18,28 @@ Plugin 'millermedeiros/vim-esformatter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'w0rp/ale'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Show line number
 set nu
+
+" ALE
+let g:ale_completion_enabled = 1
+let g:ale_linters = {
+\	'bash': ['shellcheck'],
+\	'sh': ['shellcheck'],
+\	'javascript': ['eslint'],
+\	'json': ['jq'],
+\	'make': ['checkmake'],
+\	'python': ['autopep8'],
+\	'typescript': ['tslint']
+\}
+let g:ale_linters_explicit = 1
+let g:ale_sign_column_always = 1
 
 " You complete me
 set completeopt=longest,menu
@@ -47,7 +63,6 @@ nnoremap $gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap $gf :YcmCompleter GoToDefinition<CR>
 nnoremap $gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <F7> :YcmDiags<CR>
-
 
 " vim-clang-format
 let g:clang_format#command = "clang-format-4.0"
@@ -77,7 +92,7 @@ set cursorline
 hi CursorLine   cterm=NONE ctermbg=8 ctermfg=NONE
 
 " yanking/deleting operations automatically copy to the system clipboard
-" set clipboard^=unnamedplus
+set clipboard=unnamedplus
 
 " Automatically copy when visual mode
 set clipboard+=autoselect
@@ -94,8 +109,6 @@ let g:tagbar_type_make = {
 		\ 't:targets'
 	\ ]
 \}
-" Automatically open when startup
-" autocmd VimEnter * nested :TagbarOpen
 
 " Turn on specific .vimrc files
 set exrc
