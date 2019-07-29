@@ -29,14 +29,16 @@ set nu
 
 " ALE
 let g:ale_completion_enabled = 1
+" Run both javascript and vue linters for vue files.
+let g:ale_linter_aliases = {'vue': ['javascript', 'vue']}
 let g:ale_linters = {
 \	'bash': ['shellcheck'],
 \	'sh': ['shellcheck'],
-\	'javascript': ['eslint'],
 \	'json': ['jq'],
 \	'make': ['checkmake'],
 \	'python': ['autopep8'],
-\	'typescript': ['tslint']
+\	'typescript': ['tslint'],
+\	'vue': ['eslint', 'vls']
 \}
 let g:ale_linters_explicit = 1
 let g:ale_sign_column_always = 1
@@ -62,7 +64,8 @@ let g:ycm_server_log_level = 'debug'
 nnoremap $gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap $gf :YcmCompleter GoToDefinition<CR>
 nnoremap $gd :YcmCompleter GoToDeclaration<CR>
-nnoremap <F7> :YcmDiags<CR>
+" Apply YCM FixIt
+map <F7> :YcmCompleter FixIt<CR>
 
 " vim-clang-format
 let g:clang_format#command = "clang-format-4.0"
@@ -81,25 +84,12 @@ let g:NERDTreeWinPos = "left"
 " Change the auto-complete color
 highlight Pmenu ctermbg=234 ctermfg=25
 
-" Enable mouse copy
-set mouse=
-
-" Enable auto reload
-set autoread
-
 " Enable cursor line
 set cursorline
 hi CursorLine   cterm=NONE ctermbg=8 ctermfg=NONE
 
-" yanking/deleting operations automatically copy to the system clipboard
-set clipboard=unnamedplus
-
-" Automatically copy when visual mode
-set clipboard+=autoselect
-set guioptions+=a
-
 " Install ctags before use tagbar 
-nnoremap <F9> :TagbarToggle<CR>
+" nnoremap <F9> :TagbarToggle<CR>
 " Automatically focus
 let g:tagbar_autofocus = 1
 " For Makefile
@@ -113,3 +103,9 @@ let g:tagbar_type_make = {
 " Turn on specific .vimrc files
 set exrc
 set secure
+
+" Copy Paste on System Clipboard
+function Func2X11()
+:call system('xclip -selection c', @r)
+endfunction
+vnoremap <F9> "ry:call Func2X11()<cr>
